@@ -1,0 +1,18 @@
+from config_bd import connection
+
+
+conn = connection()
+try:
+    cursor = conn.cursor()
+    query = 'SELECT titulo FROM jogos ORDER BY titulo'
+    cursor.execute(query)
+    resultado = cursor.fetchall()
+    for i in range(len(resultado)):
+        print(resultado[i])
+
+except Exception as e:
+    print(f"ERROR: {e}")
+
+finally:
+    cursor.close()
+    conn.close()
